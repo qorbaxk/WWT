@@ -18,15 +18,23 @@ h1{
     font-size: 35px;
 
 }
-#loca-input{
+.loca{
     width: 100%;
-    margin: 20px 0px;
+    height: 95px;
+    position: relative;
+}
+#loca-input{
+    width: 90%;
+    position: absolute;
     padding: 10px;
     border: none;
     border: 2px solid #3c492f;
     border-radius: 50px;
     justify-content: center;
     text-align: center;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 /*전체 박스 색*/
