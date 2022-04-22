@@ -14,10 +14,32 @@
 
             <h1>오늘 <br>뭐 입지?🤷‍♀️</h1>
 
-            <!--날씨 고르는 것-->
+            <!--지역 고르는 것-->
             <div class="loca">
-                <input id="loca-input" type="text" placeholder="어디계세요?"  /> 
-            
+
+                <select name="" id="loca-input" onchange="categoryChange(this)">
+                    <option>시/도 선택</option>
+                    <option value="general01">강원</option>
+                    <option value="general02">경기</option>
+                    <option value="general03">경남</option>
+                    <option value="general04">경북</option>
+                    <option value="general05">광주</option>
+                    <option value="general06">대구</option>
+                    <option value="general07">대전</option>
+                    <option value="general08">부산</option>
+                    <option value="general09">서울</option>
+                    <option value="general10">울산</option>
+                    <option value="general11">인천</option>
+                    <option value="general12">전남</option>
+                    <option value="general13">전북</option>
+                    <option value="general14">제주</option>
+                    <option value="general15">충남</option>
+                    <option value="general16">충북</option>
+                </select>
+
+                <select name="" id="state">
+                    <option>군/구 선택</option>
+                </select>
             </div>
 
         </section>
