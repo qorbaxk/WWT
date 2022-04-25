@@ -17,6 +17,9 @@ h1{
     font-size: 35px;
 
 }
+p{
+    word-break: keep-all;
+}
 .loca{
     width:100%;
     height:95px;
@@ -66,7 +69,7 @@ h1{
 /*전체 박스 색*/
 .tem{
     width:100%;
-    height:100vh;
+    height:85vh;
     background-color: #e2e8dc ;
     background-size: cover;
     border-radius: 50px  50px 0px 0px;

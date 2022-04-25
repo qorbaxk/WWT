@@ -5,26 +5,28 @@ let feelMent = '';
 let topcloEmoji = '';
 let btmcloEmoji = '';
 let cloMent = '';
+let cloMent2 = '';
 
 let ondoMent = '';
 
+
 let outerMent = [
-    "롱패딩","겨울코트",
+    "롱패딩","두꺼운코트",
     "숏패딩","무스탕",
     "플리스","뽀글이",
-    "항공점퍼","트렌치코트","레더재킷",
-    "바람막이","아노락재킷",
-    "트러커 재킷","가디건","블레이저재킷","후드집업"
+    "항공점퍼","레더재킷",
+    "트렌치코트","아노락","블레이저",
+    "트러커","후드집업"
 ];
 
 let topcloMent = [
-    "겨울니트","기모후드티","기모맨투맨",
+    "두꺼운니트","기모후드티","기모맨투맨",
     "니트","후드티","맨투맨",
     "셔츠","블라우스","롱슬리브",
     "반팔티","반팔셔츠","민소매"
 ];
 let btmcloMent = [
-    "내복","기모바지","코듀로이바지",
+    "기모바지","코듀로이바지",
     "슬랙스","청바지","면바지","롱치마",
     "린넨바지","냉장고바지","반바지","치마"
 ];
@@ -45,10 +47,13 @@ let maxTemp = 0;
 let rainFall = 0;
 //흐림맑음 알기위한
 let cloud = 0;
+//중간기온
+let middleTemp = 0;
 
 //날씨api 불러오는 함수
 const getWeather = async() =>{
-    let url= new URL(`https://api.openweathermap.org/data/2.5/weather?&q=london&units=metric&appid=ef710ba10aec5ee8c5ce8f984a15dff0`);
+    let local = "Singapore";
+    let url= new URL(`https://api.openweathermap.org/data/2.5/weather?&q=${local}&units=metric&appid=ef710ba10aec5ee8c5ce8f984a15dff0`);
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
@@ -66,6 +71,7 @@ const getWeather = async() =>{
     whereLoca = data.name;
     minTemp = Math.round(data.main.temp_min);
     maxTemp = Math.round(data.main.temp_max);
+    middleTemp = Math.round((maxTemp+minTemp)/2);
     
     console.log("현재지역은",whereLoca);
     console.log("현재온도는",nowTemp,"°");
@@ -97,25 +103,57 @@ const render = () =>{
 
 
   //입을 옷 알려주기
-  let middleTemp = (maxTemp+minTemp)/2;
-
-  console.log("중간온도는",middleTemp);
-
-  if(maxTemp<=16){
-    //최고기온이 16도 이하 일경우는 무조건 외투 착용
-    if(middleTemp<=-10){
-      topcloEmoji = "🥶";
-      cloMent = "아무거나 있는거<br>다 껴입으세요 <br>얼어죽어요"
-    }else if(middleTemp<=5){
-      topcloEmoji = "🥼👔🧣🧤"
-      cloMent = `${outerMent.slice(0,2)},${topcloMent.slice(0,3)}`
-    }else if(5<middleTemp<=9){
-      topcloEmoji = "🧥👔"
-      cloMent = `${outerMent.slice(2,7)},${topcloMent.slice(3,7)}`;
-    }
-  }else{
-    //여기서부터는 외투 안 넣어도 됨(최고기온 16도 이상)
+  if(middleTemp<=4){
+    topcloEmoji = "🧥👔🧣🧤";
+    btmcloEmoji = "👖";
+    cloMent = `[${outerMent.slice(0,2)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    //롱패딩,두꺼운코트,두꺼운니트,기모후드,기모맨맨
+    cloMent2 = `${btmcloMent.slice(0,2)}`;
+  }else if(4<middleTemp && middleTemp<=8){
+    topcloEmoji = "🥼👔";
+    btmcloEmoji = "👖";
+    cloMent = `[${outerMent.slice(2,6)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    //숏패,무스탕,플리스,뽀글이,두꺼운니트,기모후드,기모맨맨
+    cloMent2 = `${btmcloMent.slice(0,2)}`;
+  }else if(8<middleTemp && middleTemp<=11){
+    topcloEmoji = "🥼👔";
+    btmcloEmoji = "👖";
+    cloMent = `[${outerMent.slice(6,9)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    //항점,레더,트렌치,두꺼운니트,기모후드,기모맨맨
+    cloMent2 = `${btmcloMent.slice(2,6)}`;
+  }else if(11<middleTemp && middleTemp<=16){
+    topcloEmoji = "🥼👔";
+    btmcloEmoji = "👖";
+    cloMent = `[${outerMent.slice(9,11)}]<br>+<br>[${topcloMent.slice(3,6)}]`;
+    //아노락,블레이저,니트,후드,맨투맨
+    cloMent2 = `${btmcloMent.slice(2,6)}`;
+  }else if(16<middleTemp && middleTemp<=19){
+    topcloEmoji = "👔";
+    btmcloEmoji = "👖";
+    cloMent = `[${outerMent.slice(11,13)}]<br>+<br>[${topcloMent.slice(3,6)}]`;
+    //트러커,후드집업,니트,후드티,맨투맨
+    cloMent2 = `${btmcloMent.slice(2,6)}`;
+  }else if(19<middleTemp && middleTemp<=22){
+    topcloEmoji = "👔";
+    btmcloEmoji = "👖";
+    cloMent = `${topcloMent.slice(6,9)}`;
+    //셔츠,블라우스,롱슬
+    cloMent2 = `${btmcloMent.slice(2,7)}`;
+  }else if(22<middleTemp && middleTemp<=27){
+    topcloEmoji = "👕";
+    btmcloEmoji = "🩳";
+    cloMent = `${topcloMent.slice(9,11)}`;
+    //반팔,반팔셔츠
+    cloMent2 = `${btmcloMent.slice(6,10)}`;
+  }else if(middleTemp>27){
+    topcloEmoji = "👕";
+    btmcloEmoji = "🩳";
+    cloMent = `${topcloMent.slice(9,12)}`;
+    //반팔,반팔셔츠,민소매
+    cloMent2 = `${btmcloMent.slice(6,10)}`;
   }
+
+
 
     let topcloHTML = '';
     topcloHTML = `<p>${topcloEmoji}</p>
@@ -124,8 +162,8 @@ const render = () =>{
     document.querySelector(".topclo").innerHTML = topcloHTML;
 
     let btmcloHTML = '';
-    btmcloHTML = `<p>👖</p>
-    <p>반바지,치마</p>`;
+    btmcloHTML = `<p>${btmcloEmoji}</p>
+    <p>${cloMent2}</p>`;
 
     document.querySelector(".btmclo").innerHTML = btmcloHTML;
 
