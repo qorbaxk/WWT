@@ -2,7 +2,7 @@
 
 body{
       background-color:  #fbf8f0;
-      
+     
 }
 
 .container{
@@ -86,28 +86,42 @@ h1{
     font-size: 60px;
     text-align: center;
 }
+#highrow-tem{
+
+    font-size:20px;
+    text-align: center;
+}
+
+.ment{
+    margin-left:25px;
+    margin-bottom: -5px;
+    font-weight: 500;
+}
 
 .emoji{
-    justify-content: center;
+    width:90%;
     margin:0 auto;
-    width:100%;
-
 
 }
 .emoji div{
-    width:50%;
-    border-radius:20px;
-    box-shadow: rgb(60, 73, 47, 0.3) 0px 7px 29px 0px;
-    background-color:white ;
-    text-align: center;
+    margin-right: 50px;
     min-height: 130px;
-    margin:10px;
-
-}
-.emoji p{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
+    border-radius: 20px;
+    box-shadow: rgb(60, 73, 47, 0.3) 0px 7px 29px 0px;
+    background-color:white;
+    margin:10px 0;
+    position: relative;
+}
+.emoji div:first-child{
+    margin-right: 20px;
+}
+
+.cloth p{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .tip{

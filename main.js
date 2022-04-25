@@ -1,11 +1,14 @@
 //멘트 정리
 let rainMent = '';
 let feelMent = '';
-let outerEmoji = '';
+
 let topcloEmoji = '';
 let btmcloEmoji = '';
+let cloMent = '';
+
+let ondoMent = '';
+
 let outerMent = [
-    "목도리","장갑",
     "롱패딩","겨울코트",
     "숏패딩","무스탕",
     "플리스","뽀글이",
@@ -13,14 +16,15 @@ let outerMent = [
     "바람막이","아노락재킷",
     "트러커 재킷","가디건","블레이저재킷","후드집업"
 ];
+
 let topcloMent = [
-    "히트텍/내복","두꺼운니트","기모후드티","기모맨투맨",
+    "겨울니트","기모후드티","기모맨투맨",
     "니트","후드티","맨투맨",
     "셔츠","블라우스","롱슬리브",
     "반팔티","반팔셔츠","민소매"
 ];
 let btmcloMent = [
-    "히트텍/내복","기모바지","코듀로이바지",
+    "내복","기모바지","코듀로이바지",
     "슬랙스","청바지","면바지","롱치마",
     "린넨바지","냉장고바지","반바지","치마"
 ];
@@ -44,7 +48,7 @@ let cloud = 0;
 
 //날씨api 불러오는 함수
 const getWeather = async() =>{
-    let url= new URL(`https://api.openweathermap.org/data/2.5/weather?&q=seoul&units=metric&appid=ef710ba10aec5ee8c5ce8f984a15dff0`);
+    let url= new URL(`https://api.openweathermap.org/data/2.5/weather?&q=london&units=metric&appid=ef710ba10aec5ee8c5ce8f984a15dff0`);
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
@@ -85,33 +89,37 @@ const render = () =>{
     let ondoHTML = '';
 
     ondoHTML = `<p id="now-city">${whereLoca}은 지금!</p> 
-    <p id="now-ondo">${nowTemp}°</p>`;
+    <p id="now-ondo">${nowTemp}°</p>
+    <p id="highrow-tem">  ${minTemp}° / ${maxTemp}° </p>`;
 
     document.getElementById("ondo-thread").innerHTML = ondoHTML;
 
 
-    //옷차림
-    let emojiMent = ["🧣🧤","🧥","🥼","👔","👕👚","👖","🩳"];
-    if(11<nowTemp){
-        outerEmoji = "🥼";
-    }else if(nowTemp<4){
-        outerEmoji = "🧣🧤🧥";
+
+  //입을 옷 알려주기
+  let middleTemp = (maxTemp+minTemp)/2;
+
+  console.log("중간온도는",middleTemp);
+
+  if(maxTemp<=16){
+    //최고기온이 16도 이하 일경우는 무조건 외투 착용
+    if(middleTemp<=-10){
+      topcloEmoji = "🥶";
+      cloMent = "아무거나 있는거<br>다 껴입으세요 <br>얼어죽어요"
+    }else if(middleTemp<=5){
+      topcloEmoji = "🥼👔🧣🧤"
+      cloMent = `${outerMent.slice(0,2)},${topcloMent.slice(0,3)}`
+    }else if(5<middleTemp<=9){
+      topcloEmoji = "🧥👔"
+      cloMent = `${outerMent.slice(2,7)},${topcloMent.slice(3,7)}`;
     }
-    else if(4<nowTemp<=11){
-        outerEmoji = "🧥";
-    }
-
-
-
-    let outerHTML = '';
-    outerHTML = `<p>${outerEmoji}</p>
-    <p>패딩,코트</p>`;
-
-    document.querySelector(".outer").innerHTML = outerHTML;
+  }else{
+    //여기서부터는 외투 안 넣어도 됨(최고기온 16도 이상)
+  }
 
     let topcloHTML = '';
-    topcloHTML = `<p>👔</p>
-    <p>반팔,긴팔</p>`;
+    topcloHTML = `<p>${topcloEmoji}</p>
+    <p>${cloMent}</p>`;
 
     document.querySelector(".topclo").innerHTML = topcloHTML;
 
@@ -145,17 +153,27 @@ const render = () =>{
     document.querySelector(".rainFall").innerHTML = rainHTML;
 
 
-    //체감온도 보여주기
-    if(-1<= nowTemp-feelTemp <= 1){
-        feelMent = "현재온도와 비슷해요!"
-    }else if(nowTemp-feelTemp > 1){
-        feelMent = "현재온도보다 낮게 느껴져요!"
-    }else{
-        feelMent = "현재온도보다 높게 느껴져요!"
+    //체감온도 또는 일교차 보여주기
+    if(maxTemp-minTemp<10){
+      //일교차가 10도 이하일 경우
+      ondoMent = "체감온도";
+      if(nowTemp-feelTemp > 1){
+          feelMent = "현재온도보다 낮게 느껴져요!"
+      }else if(nowTemp-feelTemp < 1){
+          feelMent = "현재온도보다 높게 느껴져요!"
+      }else if(-1<= nowTemp-feelTemp <= 1){
+          feelMent = "현재온도와 비슷해요!"
+      }
+
+    }else if(maxTemp-minTemp>=10){
+      //일교차가 10도 이상 날 경우
+      ondoMent = "일교차";
+      feelTemp = `${maxTemp-minTemp}`;
+      feelMent = "오늘은 일교차가 커요!<br> 옷을 챙겨가세요!"
     }
 
     let feelHTML = '';
-    feelHTML = `<p class="left">체감온도</p>
+    feelHTML = `<p class="left">${ondoMent}</p>
     <p>${feelTemp}°</p>
     <p>${feelMent}</p>`;
     document.querySelector(".feelOndo").innerHTML = feelHTML;
