@@ -19,6 +19,7 @@ h1{
 }
 p{
     word-break: keep-all;
+    word-wrap: break-word;
 }
 .loca{
     width:100%;
