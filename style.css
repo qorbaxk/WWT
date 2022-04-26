@@ -84,7 +84,15 @@ p{
     font-size: 20px;
     text-align:center;
 }
+#ondo-thread{
+    width:100%;
+    position: relative;
+}
+.containerbackground {
 
+    text-align: center;
+    font-size:50px;
+}
 #now-ondo{
     margin-top: -10px;
     font-size: 60px;

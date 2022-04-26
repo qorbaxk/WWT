@@ -6,7 +6,7 @@ let topcloEmoji = '';
 let btmcloEmoji = '';
 let cloMent = '';
 let cloMent2 = '';
-
+let nowEmoji='';
 let ondoMent = '';
 
 
@@ -91,10 +91,26 @@ getWeather();
 //보여주는 함수
 const render = () =>{
    
+  //날씨 이모지 보여주기
+  if(rainFall>0){
+    nowEmoji="🌧"
+  }else {
+    if(1<cloud<49){
+      nowEmoji="🌤"
+    }else if(cloud>50){
+      nowEmoji="🌥"
+    }else{
+      if(snow>0){
+        nowEmoji="🌨"
+    }else{nowEmoji="🌞"}
+  }
+  }
+
     //지역,현재온도 보여주기
     let ondoHTML = '';
 
     ondoHTML = `<p id="now-city">${whereLoca}은 지금!</p> 
+    <div class="containerbackground">${nowEmoji}</div>
     <p id="now-ondo">${nowTemp}°</p>
     <p id="highrow-tem">  ${minTemp}° / ${maxTemp}° </p>`;
 
