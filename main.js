@@ -131,31 +131,31 @@ const render = () =>{
   if(middleTemp<=4){
     topcloEmoji = "🧥👔🧣🧤";
     btmcloEmoji = "👖";
-    cloMent = `[${outerMent.slice(0,2)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    cloMent = `${outerMent.slice(0,2)},${topcloMent.slice(0,3)}`;
     //롱패딩,두꺼운코트,두꺼운니트,기모후드,기모맨맨
     cloMent2 = `${btmcloMent.slice(0,2)}`;
   }else if(4<middleTemp && middleTemp<=8){
     topcloEmoji = "🥼👔";
     btmcloEmoji = "👖";
-    cloMent = `[${outerMent.slice(2,6)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    cloMent = `${outerMent.slice(2,6)},${topcloMent.slice(0,3)}`;
     //숏패,무스탕,플리스,뽀글이,두꺼운니트,기모후드,기모맨맨
     cloMent2 = `${btmcloMent.slice(0,2)}`;
   }else if(8<middleTemp && middleTemp<=11){
     topcloEmoji = "🥼👔";
     btmcloEmoji = "👖";
-    cloMent = `[${outerMent.slice(6,9)}]<br>+<br>[${topcloMent.slice(0,3)}]`;
+    cloMent = `${outerMent.slice(6,9)},${topcloMent.slice(0,3)}`;
     //항점,레더,트렌치,두꺼운니트,기모후드,기모맨맨
     cloMent2 = `${btmcloMent.slice(2,6)}`;
   }else if(11<middleTemp && middleTemp<=16){
     topcloEmoji = "🥼👔";
     btmcloEmoji = "👖";
-    cloMent = `[${outerMent.slice(9,11)}]<br>+<br>[${topcloMent.slice(3,6)}]`;
+    cloMent = `${outerMent.slice(9,11)},${topcloMent.slice(3,6)}`;
     //아노락,블레이저,니트,후드,맨투맨
     cloMent2 = `${btmcloMent.slice(2,6)}`;
   }else if(16<middleTemp && middleTemp<=19){
     topcloEmoji = "👔";
     btmcloEmoji = "👖";
-    cloMent = `[${outerMent.slice(11,13)}]<br>+<br>[${topcloMent.slice(3,6)}]`;
+    cloMent = `${outerMent.slice(11,13)},${topcloMent.slice(3,6)}`;
     //트러커,후드집업,니트,후드티,맨투맨
     cloMent2 = `${btmcloMent.slice(2,6)}`;
   }else if(19<middleTemp && middleTemp<=22){
@@ -307,12 +307,15 @@ function categoryChange(e) {
       //하위도시 없을때
       doName = doValue.options[doValue.selectedIndex].text;
       console.log("큰지역은",doName);
-      changeCity();
+    
       
-
+      
       //입력후 초기화
       state.options.length = 0;
-
+      cityName = '';
+      
+      changeCity();
+      
 
       
       // 군/구 갯수;
@@ -329,11 +332,8 @@ const citySelect = () =>{
 
   cityName = nameValue.options[nameValue.selectedIndex].text;
   console.log(`도시는 ${nameValue.options[nameValue.selectedIndex].text}`);
-  if(cityName == ""){
-
-  }else{
-    changeCity();
-  }
+  changeCity();
+  
   
 }
 
@@ -341,20 +341,24 @@ const citySelect = () =>{
 
 //지역 바꾸기
 const changeCity = () =>{
-  
-  //광역시 일때
-
-  
-  //작은도시 일때
-  for(i=0; i<localList.length; i++){
-    if(cityName == localList[i].name){
-      nowWhere = localList[i].city;
-      whereLoca = localList[i].name;
-      break;
+    for(i=0; i<localList.length; i++){
+      if(cityName == localList[i].name){
+      
+        nowWhere = localList[i].city;
+        whereLoca = localList[i].name;
+        break;
+        
+      }else if(doName == localList[i].name){
+        nowWhere = localList[i].city;
+        whereLoca = localList[i].name;
+       
+        break;
+      }
     }
-  }
+  
   console.log(nowWhere);
   getWeather();
+  
   
     
 }
