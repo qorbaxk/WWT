@@ -494,7 +494,7 @@ function categoryChange(e) {
 
   //하위도시 없을때
   doName = doValue.options[doValue.selectedIndex].text;
-  console.log("큰지역은", doName);
+  
 
   //입력후 초기화
   state.options.length = 0;
@@ -514,7 +514,6 @@ function categoryChange(e) {
 //하위지역 값 추출
 const citySelect = () => {
   cityName = nameValue.options[nameValue.selectedIndex].text;
-  console.log(`도시는 ${nameValue.options[nameValue.selectedIndex].text}`);
   changeCity();
 };
 
@@ -533,6 +532,6 @@ const changeCity = () => {
     }
   }
 
-  console.log(nowWhere);
+
   getWeather();
 };
