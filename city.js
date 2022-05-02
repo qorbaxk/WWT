@@ -27,7 +27,7 @@ const localList = [
     {name:"금천구", city:"Geumcheon-gu"},
     {name:"노원구", city:"nowon-gu"},
     {name:"도봉구", city:"dobong-gu"},
-    {name:"동대문구", city:"seoul"},//ㄴㄴ
+    {name:"동대문구", city:"seoul"},
     {name:"동작구", city:"dongjak-gu"},
     {name:"마포구", city:"mapo-gu"},
     {name:"서대문구", city:"seodaemun-gu"},
@@ -101,20 +101,20 @@ const localList = [
     //경상남도
    
     {name:"거제시", city:"Kyosai"},
-    {name:"거창군", city:"Gyeongsangnam-do"},//ㄴㄴ
+    {name:"거창군", city:"Gyeongsangnam-do"},
     {name:"고성군", city:"goseong"},
     {name:"김해시", city:"gimhae"},
     {name:"남해군", city:"namhae"},
     {name:"마산시", city:"masan"},
     {name:"밀양시", city:"miryang"},
     {name:"사천시", city:"Seisan-ri"},
-    {name:"산청군", city:"Gyeongsangnam-do"},//ss
+    {name:"산청군", city:"Gyeongsangnam-do"},
     {name:"양산시", city:"Yangsan"},
     {name:"의령군", city:"uiryeong"},
     {name:"진주시", city:"jinju"},
     {name:"창녕군", city:"changnyeong"},
     {name:"창원시", city:"changwon"},
-    {name:"통영시", city:"Gyeongsangnam-do"},//ㄴㄴ
+    {name:"통영시", city:"Gyeongsangnam-do"},
     {name:"하동군", city:"hadong"},
     {name:"함안군", city:"haman"},
     {name:"함양군", city:"hamyang"},
@@ -138,7 +138,7 @@ const localList = [
     {name:"영주시", city:"yeongju-si"},
     {name:"영천시", city:"yeongcheon-si"},
     {name:"예천군", city:"yecheon"},
-    {name:"울릉군", city:"Gyeongsangbuk-do"},//ㄴㄴ
+    {name:"울릉군", city:"Gyeongsangbuk-do"},
     {name:"울진군", city:"Ulchin"},
     {name:"의성군", city:"uiseong"},
     {name:"청도군", city:"cheongdo"},
@@ -155,12 +155,12 @@ const localList = [
     {name:"보령시", city:"Boryeong"},
     {name:"부여군", city:"buyeo"},
     {name:"서산시", city:"seosan-si"},
-    {name:"서천군", city:"Chungcheongnam-do"},//ss
+    {name:"서천군", city:"Chungcheongnam-do"},
     {name:"아산시", city:"asan"},
     {name:"계룡시", city:"gyeryong-si"},
     {name:"예산군", city:"yesan"},
     {name:"천안시", city:"cheonan-si"},
-    {name:"청양군", city:"Chungcheongnam-do"},//ss
+    {name:"청양군", city:"Chungcheongnam-do"},
     {name:"태안군", city:"Taian"},
     {name:"홍성군", city:"hongseong"},
 
@@ -168,14 +168,14 @@ const localList = [
     
     {name:"괴산군", city:"Koesan"},
     {name:"단양군", city:"Oegeomusil"},
-    {name:"보은군", city:"Chungcheongbuk-do"},//ss
+    {name:"보은군", city:"Chungcheongbuk-do"},
     {name:"영동군", city:"yeongdong"},
     {name:"옥천군", city:"okcheon-gun"},
-    {name:"음성군", city:"Chungcheongbuk-do"},//ㄴㄴ
-    {name:"증평군", city:"Chungcheongbuk-do"},//ㄴㄴ
+    {name:"음성군", city:"Chungcheongbuk-do"},
+    {name:"증평군", city:"Chungcheongbuk-do"},
     {name:"제천시", city:"jecheon-si"},
-    {name:"진천군", city:"Chungcheongbuk-do"},//ㄴㄴ
-    {name:"청원군", city:"Chungcheongbuk-do"},//ㄴㄴ
+    {name:"진천군", city:"Chungcheongbuk-do"},
+    {name:"청원군", city:"Chungcheongbuk-do"},
     {name:"청주시", city:"cheongju-si"},
     {name:"충주시", city:"chungju-si"},
 
@@ -183,7 +183,7 @@ const localList = [
     //제주
     
     {name:"제주시", city:"Jeju"},
-    {name:"서귀포시", city:"jeju"},//ss
+    {name:"서귀포시", city:"jeju"},
 
 
     //전북
@@ -199,13 +199,13 @@ const localList = [
     {name:"임실군", city:"imsil"},
     {name:"장수군", city:"Changsu"},
     {name:"전주시", city:"jeonju"},
-    {name:"정읍시", city:"Jeollabuk-do"},//ss
+    {name:"정읍시", city:"Jeollabuk-do"},
     {name:"진안군", city:"jinan-gun"},
     {name:"순창군", city:"Sunchang-chodeunghakgyo"},
 
     //전남
    
-    {name:"강진군", city:"Jeollanam-do"},//ss
+    {name:"강진군", city:"Jeollanam-do"},
     {name:"고흥군", city:"Koyo"},
     {name:"곡성군", city:"gokseong"},
     {name:"광양시", city:"gwangyang"},
@@ -222,8 +222,8 @@ const localList = [
     {name:"영암군", city:"Yeongam-guncheong"},
     {name:"완도군", city:"wando"},
     {name:"장성군", city:"jangseong"},
-    {name:"장흥군", city:"Jeollanam-do"},//ss
-    {name:"진도군", city:"Jeollanam-do"},//ss
+    {name:"장흥군", city:"Jeollanam-do"},
+    {name:"진도군", city:"Jeollanam-do"},
     {name:"함평군", city:"hampyeong"},
     {name:"해남군", city:"haenam"},
     {name:"화순군", city:"hwasun"},
