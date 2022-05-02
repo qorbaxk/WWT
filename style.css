@@ -116,6 +116,7 @@ p{
 
 }
 .emoji div{
+    padding-top: 10px;
     margin-right: 50px;
     min-width: 10%;
     min-height: 130px;
